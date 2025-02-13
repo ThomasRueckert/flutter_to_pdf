@@ -97,11 +97,7 @@ class ExportDelegate {
 
     final Size layoutSize = options.pageFormatOptions.getAvailableSize();
 
-    double? pixelRatio;
-    if (context != null) {
-      fontData.setAssetBundleByContext(context);
-      pixelRatio = MediaQuery.of(context).devicePixelRatio;
-    }
+    double? pixelRatio = 1.0;
 
     Element? element = layoutWidget(widget, layoutSize, pixelRatio);
 
