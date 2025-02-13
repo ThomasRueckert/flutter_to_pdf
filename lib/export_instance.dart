@@ -274,7 +274,7 @@ class ExportInstance {
         }
 
         assert(boundary != null);
-        final ui.Image uiImage = await boundary!.toImage(pixelRatio: 1.0);
+        final ui.Image uiImage = await boundary!.toImage(pixelRatio: 2.0);
 
         final pngBytes =
             await uiImage.toByteData(format: ui.ImageByteFormat.png);
