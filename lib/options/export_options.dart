@@ -8,11 +8,13 @@ class ExportOptions {
   final CheckboxOptions checkboxOptions;
   final PageFormatOptions pageFormatOptions;
   final double pixelRatio;
+  final double fontSizeScale;
 
   const ExportOptions({
     this.textFieldOptions = const TextFieldOptions.none(),
     this.checkboxOptions = const CheckboxOptions.none(),
     this.pageFormatOptions = const PageFormatOptions(),
     this.pixelRatio = 1.0,
+    this.fontSizeScale = 1.0,
   });
 }

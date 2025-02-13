@@ -20,37 +20,40 @@ import 'package:pdf/widgets.dart' as pw
 
 import '../options/font_data.dart';
 import 'color.dart';
+import '../options/export_options.dart';
 
 extension TextStyleConverter on TextStyle {
-  Future<pw.TextStyle> toPdfTextStyle(FontData fontData) async {
-    pw.Font? font = fontFamily != null 
-      ? await resolveFont(fontFamily!, fontData)
-      : null;
+  Future<pw.TextStyle> toPdfTextStyle(FontData fontData,
+      {ExportOptions? exportOptions}) async {
+    final double fontSizeScale = exportOptions?.fontSizeScale ?? 1.0;
+    pw.Font? font =
+        fontFamily != null ? await resolveFont(fontFamily!, fontData) : null;
     return pw.TextStyle(
-        color: color?.toPdfColor(),
-        fontSize: fontSize,
-        fontStyle: fontStyle?.toPdfFontStyle(),
-        fontWeight: fontWeight?.toPdfFontWeight(),
-        height: height,
-        letterSpacing: letterSpacing,
-        wordSpacing: wordSpacing,
-        decoration: decoration?.toPdfTextDecoration(),
-        decorationColor: decorationColor?.toPdfColor(),
-        decorationStyle: decorationStyle?.toPdfTextDecorationStyle(),
-        decorationThickness: decorationThickness,
-        inherit: !inherit && font == null ? true : inherit,
-        font: font,
-        fontFallback: fontFamilyFallback != null
-            ? (await Future.wait(fontFamilyFallback!
-                .map((String font) => resolveFont(font, fontData))))
-                .whereType<pw.Font>().toList()
-            : [],
-        background: backgroundColor != null
-            ? pw.BoxDecoration(
-                color: backgroundColor!.toPdfColor(),
-              )
-            : null,
-      );
+      color: color?.toPdfColor(),
+      fontSize: fontSize * fontSizeScale,
+      fontStyle: fontStyle?.toPdfFontStyle(),
+      fontWeight: fontWeight?.toPdfFontWeight(),
+      height: height,
+      letterSpacing: letterSpacing,
+      wordSpacing: wordSpacing,
+      decoration: decoration?.toPdfTextDecoration(),
+      decorationColor: decorationColor?.toPdfColor(),
+      decorationStyle: decorationStyle?.toPdfTextDecorationStyle(),
+      decorationThickness: decorationThickness,
+      inherit: !inherit && font == null ? true : inherit,
+      font: font,
+      fontFallback: fontFamilyFallback != null
+          ? (await Future.wait(fontFamilyFallback!
+                  .map((String font) => resolveFont(font, fontData))))
+              .whereType<pw.Font>()
+              .toList()
+          : [],
+      background: backgroundColor != null
+          ? pw.BoxDecoration(
+              color: backgroundColor!.toPdfColor(),
+            )
+          : null,
+    );
   }
 
   Future<pw.Font?> resolveFont(String font, FontData fontData) async {

@@ -85,7 +85,8 @@ extension TextFieldConverter on TextField {
                   textStyle: await (instance.delegate.options.textFieldOptions
                               .getTextStyle(textField.key) ??
                           textField.style)
-                      ?.toPdfTextStyle(instance.delegate.fontData),
+                      ?.toPdfTextStyle(instance.delegate.fontData,
+                          exportOptions: instance.delegate.options),
                   maxLength: textField.maxLength,
                   fieldFlags: {
                     if (textField.maxLines != null && textField.maxLines! > 1)
@@ -105,7 +106,8 @@ extension TextFieldConverter on TextField {
                     style: await (instance.delegate.options.textFieldOptions
                                 .getTextStyle(textField.key) ??
                             textField.style)
-                        ?.toPdfTextStyle(instance.delegate.fontData),
+                        ?.toPdfTextStyle(instance.delegate.fontData,
+                            exportOptions: instance.delegate.options),
                   )),
         ),
         if (label != null)
