@@ -99,7 +99,7 @@ class ExportDelegate {
 
     double? pixelRatio = 1.0;
 
-    Element? element = layoutWidget(widget, layoutSize, pixelRatio);
+    Element? element = layoutWidget(widget, layoutSize);
 
     final List<pw.Widget> children =
         await exportInstance.matchWidget(element!, context);

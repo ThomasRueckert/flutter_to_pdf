@@ -61,14 +61,14 @@ Element? findFirstDescendantElement<T>(Element element) {
 }
 
 /// Lays out the provided [widget] in a view of [size] and returns it as [Element].
-Element? layoutWidget(Widget widget, Size size, double? pixelRatio) {
+Element? layoutWidget(Widget widget, Size size) {
   RenderRepaintBoundary repaintBoundary = RenderRepaintBoundary();
 
   RenderView renderView = RenderView(
     configuration: ViewConfiguration(
       logicalConstraints: BoxConstraints.tight(size),
-      physicalConstraints: BoxConstraints.tight(size * (pixelRatio ?? 1.0)),
-      devicePixelRatio: pixelRatio ?? 1.0,
+      physicalConstraints: BoxConstraints.tight(size * (1.0)),
+      devicePixelRatio: 1.0,
     ),
     view: WidgetsBinding.instance.platformDispatcher.views.first,
     child: RenderPositionedBox(
