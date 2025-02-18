@@ -9,13 +9,13 @@ class Partitions extends StatelessWidget {
   final bool isPartition;
 
   const Partitions({
-    Key? key,
+    super.key,
     required this.children,
     this.mainAxisSize = MainAxisSize.max,
     this.textDirection,
     this.textBaseline,
     this.isPartition = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

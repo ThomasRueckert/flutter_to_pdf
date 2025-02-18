@@ -6,10 +6,10 @@ class Partition extends StatelessWidget {
   final int flex;
 
   const Partition({
-    Key? key,
+    super.key,
     required this.child,
     this.flex = 1,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
