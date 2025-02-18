@@ -3,6 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_to_pdf/flutter_to_pdf.dart';
+import 'package:flutter_to_pdf/widgets/partitions.dart';
+import 'package:flutter_to_pdf/widgets/partition.dart';
+
+import 'package:pdf/widgets.dart' as pw;
 
 void main() => runApp(const Demo());
 
@@ -141,27 +145,132 @@ class _DemoState extends State<Demo> {
                     padding: const EdgeInsets.all(pageInset * cm),
                     child: ExportFrame(
                       exportDelegate: exportDelegate,
-                      frameId: 'someFrameId', // identifies the frame
+                      frameId: 'cvDocFrameId', // identifies the frame
                       child: Container(
                         width: 595 - 2 * pageInset * cm,
-                        height: 842 - 2 * pageInset * cm,
-                        child: Column(
+                        child: Partitions(
+                          isPartition: true,
                           children: [
-                            Container(
-                              margin: const EdgeInsets.all(50),
-                              decoration: const BoxDecoration(
-                                  border: Border(
-                                left: BorderSide(color: Colors.black, width: 2),
-                                right:
-                                    BorderSide(color: Colors.black, width: 2),
-                                top: BorderSide(color: Colors.black, width: 2),
-                                bottom:
-                                    BorderSide(color: Colors.black, width: 2),
-                              )),
-                              child: Text(
-                                "Mario Meyer",
-                                style: headerTextPoppins,
-                                textScaler: TextScaler.noScaling,
+                            Partition(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 150, bottom: 150),
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          border: Border(
+                                        left: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        right: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        top: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        bottom: BorderSide(
+                                            color: Colors.black, width: 2),
+                                      )),
+                                      child: Text(
+                                        "Mario Meyer",
+                                        style: headerTextPoppins,
+                                        textScaler: TextScaler.noScaling,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Partition(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 150, bottom: 150),
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          border: Border(
+                                        left: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        right: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        top: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        bottom: BorderSide(
+                                            color: Colors.black, width: 2),
+                                      )),
+                                      child: Text(
+                                        "Mario Meyer",
+                                        style: headerTextPoppins,
+                                        textScaler: TextScaler.noScaling,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 150, bottom: 150),
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          border: Border(
+                                        left: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        right: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        top: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        bottom: BorderSide(
+                                            color: Colors.black, width: 2),
+                                      )),
+                                      child: Text(
+                                        "Mario Meyer",
+                                        style: headerTextPoppins,
+                                        textScaler: TextScaler.noScaling,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 150, bottom: 150),
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          border: Border(
+                                        left: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        right: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        top: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        bottom: BorderSide(
+                                            color: Colors.black, width: 2),
+                                      )),
+                                      child: Text(
+                                        "Mario Meyer",
+                                        style: headerTextPoppins,
+                                        textScaler: TextScaler.noScaling,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 150, bottom: 150),
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          border: Border(
+                                        left: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        right: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        top: BorderSide(
+                                            color: Colors.black, width: 2),
+                                        bottom: BorderSide(
+                                            color: Colors.black, width: 2),
+                                      )),
+                                      child: Text(
+                                        "Mario Meyer",
+                                        style: headerTextPoppins,
+                                        textScaler: TextScaler.noScaling,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -177,8 +286,17 @@ class _DemoState extends State<Demo> {
       );
 
   save() async {
-    final pdf = await exportDelegate.exportToPdfDocument('someFrameId');
-    saveFile(pdf, 'output');
+    final pdfWidget = await exportDelegate.exportToPdfWidget('cvDocFrameId');
+    final pdfDoc = pw.Document();
+    pdfDoc.addPage(
+      pw.MultiPage(
+        pageFormat: exportDelegate.options.pageFormatOptions.getPageFormat(),
+        build: (context) => [pdfWidget],
+      ),
+    );
+
+    // final pdf = await exportDelegate.exportToPdfDocument('cvDocFrameId');
+    saveFile(pdfDoc, 'output');
   }
 
   Future<void> saveFile(document, String name) async {

@@ -36,6 +36,8 @@ import 'widgets/list_view.dart';
 import 'widgets/grid_view.dart';
 import 'widgets/wrap.dart';
 import 'widgets/table.dart';
+import 'widgets/partitions.dart';
+import 'widgets/partition.dart';
 
 /// The delegate handling the low-level export of the widget tree.
 class ExportInstance {
@@ -69,8 +71,14 @@ class ExportInstance {
     final Widget widget = element.widget;
 
     switch (widget.runtimeType) {
-      case const (MergeSemantics): //anchor: end of widget tree
+      case const (MergeSemantics):
         return [];
+      case const (Partitions):
+        final children = await _visit(element, context);
+        return [(widget as Partitions).toPdfWidget(children)];
+      case const (Partition):
+        final children = await _visit(element, context);
+        return [(widget as Partition).toPdfWidget(children.first)];
       case const (Container):
         final List children = await _visit(element, context);
         return [
