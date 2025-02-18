@@ -25,12 +25,11 @@ import '../options/export_options.dart';
 extension TextStyleConverter on TextStyle {
   Future<pw.TextStyle> toPdfTextStyle(FontData fontData,
       {ExportOptions? exportOptions}) async {
-    final double fontSizeScale = exportOptions?.fontSizeScale ?? 1.0;
     pw.Font? font =
         fontFamily != null ? await resolveFont(fontFamily!, fontData) : null;
     return pw.TextStyle(
       color: color?.toPdfColor(),
-      fontSize: fontSize * fontSizeScale,
+      fontSize: fontSize,
       fontStyle: fontStyle?.toPdfFontStyle(),
       fontWeight: fontWeight?.toPdfFontWeight(),
       height: height,
