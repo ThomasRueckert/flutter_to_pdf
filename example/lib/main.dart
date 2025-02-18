@@ -143,19 +143,12 @@ class _DemoState extends State<Demo> {
                       exportDelegate: exportDelegate,
                       frameId: 'someFrameId', // identifies the frame
                       child: Container(
-                        decoration: BoxDecoration(
-                          border: null,
-                        ),
-                        padding: const EdgeInsets.only(
-                          left: 0.0,
-                          right: 0.0,
-                        ),
                         width: 595 - 2 * pageInset * cm,
                         height: 842 - 2 * pageInset * cm,
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
+                              margin: const EdgeInsets.all(50),
                               decoration: const BoxDecoration(
                                   border: Border(
                                 left: BorderSide(color: Colors.black, width: 2),
@@ -165,103 +158,12 @@ class _DemoState extends State<Demo> {
                                 bottom:
                                     BorderSide(color: Colors.black, width: 2),
                               )),
-                              margin: const EdgeInsets.all(50),
                               child: Text(
                                 "Mario Meyer",
                                 style: headerTextPoppins,
                                 textScaler: TextScaler.noScaling,
                               ),
                             ),
-                            // Text(
-                            //   "Mario Meyer",
-                            //   style: headerTextPoppins,
-                            //   textScaler: TextScaler.noScaling,
-                            // ),
-                            // SizedBox(height: 10),
-                            // Text(
-                            //   "Leiter/in Personal",
-                            //   style: subheaderTextPoppins,
-                            //   textScaler: TextScaler.noScaling,
-                            // ),
-                            // SizedBox(height: 10),
-                            // Text(
-                            //   "Chemnitzer Straßeo 16\n09212 Limbach-Oberfrohnao",
-                            //   style: bodyTextPoppins,
-                            //   textScaler: TextScaler.noScaling,
-                            // ),
-                            // SizedBox(height: 50),
-                            // Text(
-                            //   "Profil",
-                            //   style: badgeTextPoppins,
-                            //   textScaler: TextScaler.noScaling,
-                            // ),
-                            // SizedBox(height: 10),
-                            // Text(
-                            //   "Engagierte und zuverlässige Mitarbeiterin mit fundierten\nKenntnissen im Bereich Administration und Finanzen, insbesondere\nin der Debitoren- und Kreditorenbuchhaltung sowie im Controlling.\nDurch mein Studium der Betriebswirtschaftslehre und meine\npraktische Erfahrung bei syscore GmbH verfüge ich über ein breites\nFachwissen und eine hohe Zahlenaffinität. Ich suche eine neue\nHerausforderung, in der ich meine analytischen Fähigkeiten und\nmeine Kommunikationsstärke einsetzen kann.",
-                            //   style: bodyTextPoppins,
-                            //   textScaler: TextScaler.noScaling,
-                            // ),
-                            // SizedBox(height: 25),
-                            // Text(
-                            //   "Job-Stationen",
-                            //   style: badgeTextPoppins,
-                            //   textScaler: TextScaler.noScaling,
-                            // ),
-                            // SizedBox(height: 10),
-                            // Column(
-                            //   crossAxisAlignment: CrossAxisAlignment.start,
-                            //   children: [
-                            //     Row(
-                            //       crossAxisAlignment: CrossAxisAlignment.start,
-                            //       children: [
-                            //         Container(
-                            //           width: 6,
-                            //           height: 6,
-                            //           margin: const EdgeInsets.only(
-                            //               top: 5.5, left: 2, right: 5),
-                            //           decoration: const BoxDecoration(
-                            //             color: Colors.green,
-                            //             shape: BoxShape.circle,
-                            //           ),
-                            //         ),
-                            //         Text("Administration and Finance Assistance",
-                            //             style: bodyTextPoppins,
-                            //             textScaler: TextScaler.noScaling),
-                            //         Text(" (Job)",
-                            //             style: bodyTextPoppins,
-                            //             textScaler: TextScaler.noScaling),
-                            //       ],
-                            //     ),
-                            //     SizedBox(height: 5),
-                            //     Text("syscore GmbH in Chemnitz",
-                            //         style: bodyTextPoppinsGray,
-                            //         textScaler: TextScaler.noScaling),
-                            //     Text("06 / 2022 - 06 / 2023",
-                            //         style: bodyTextPoppinsGray,
-                            //         textScaler: TextScaler.noScaling),
-                            //     SizedBox(height: 5),
-                            //     Container(
-                            //       decoration: const BoxDecoration(
-                            //           border: Border(
-                            //               left: BorderSide(
-                            //                   color: Colors.green, width: 2))),
-                            //       // margin: const EdgeInsets.only(
-                            //       //     left: 0.2 * cm),
-                            //       padding: const EdgeInsets.only(
-                            //           left: 0.2 * cm),
-                            //       child: Column(
-                            //           crossAxisAlignment: CrossAxisAlignment.start,
-                            //           children: <Widget>[
-                            //             SizedBox(height: 10),
-                            //             Text(
-                            //                 "Verwaltung von Debitoren- und Kreditoren,\nRechnungsstellung und Kundenbetreuung, Finanzielles\nControlling, Projektcontrolling und Budgetüberwachung",
-                            //                 style: bodyTextPoppins,
-                            //                 textScaler: TextScaler.noScaling),
-                            //             SizedBox(height: 10),
-                            //           ]),
-                            //     )
-                            //   ],
-                            // )
                           ],
                         ),
                       ),

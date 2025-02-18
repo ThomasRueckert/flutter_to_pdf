@@ -97,13 +97,12 @@ class ExportDelegate {
 
     final Size layoutSize = options.pageFormatOptions.getAvailableSize();
 
-    double? pixelRatio = 1.0;
-    if (options.pixelRatio != 1.0) {
-      pixelRatio = options.pixelRatio;
-    } else if (context != null) {
+    double? pixelRatio;
+    if (context != null) {
       fontData.setAssetBundleByContext(context);
       pixelRatio = MediaQuery.of(context).devicePixelRatio;
     }
+
     Element? element = layoutWidget(widget, layoutSize, pixelRatio);
 
     final List<pw.Widget> children =
