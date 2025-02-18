@@ -19,8 +19,7 @@ extension TextConverter on Text {
         overflow: overflow?.toPdfTextOverflow(),
         // ignore: deprecated_member_use
         textScaleFactor: textScaleFactor ?? 1.0,
-        style: await style?.toPdfTextStyle(instance.delegate.fontData,
-            exportOptions: instance.delegate.options),
+        style: await style?.toPdfTextStyle(instance.delegate.fontData),
       );
 }
 

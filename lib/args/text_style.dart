@@ -20,11 +20,9 @@ import 'package:pdf/widgets.dart' as pw
 
 import '../options/font_data.dart';
 import 'color.dart';
-import '../options/export_options.dart';
 
 extension TextStyleConverter on TextStyle {
-  Future<pw.TextStyle> toPdfTextStyle(FontData fontData,
-      {ExportOptions? exportOptions}) async {
+  Future<pw.TextStyle> toPdfTextStyle(FontData fontData) async {
     pw.Font? font =
         fontFamily != null ? await resolveFont(fontFamily!, fontData) : null;
     return pw.TextStyle(
